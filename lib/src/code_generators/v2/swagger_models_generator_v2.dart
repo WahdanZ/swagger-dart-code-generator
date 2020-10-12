@@ -7,8 +7,7 @@ import 'package:swagger_dart_code_generator/src/models/generator_options.dart';
 import 'package:meta/meta.dart';
 import 'package:swagger_dart_code_generator/src/exception_words.dart';
 
-class SwaggerModelsGeneratorV2 implements SwaggerModelsGenerator {
-  final List<String> _keyClasses = ['Response', 'Request'];
+class SwaggerModelsGeneratorV2 extends SwaggerModelsGenerator {
   @override
   String generate(String dartCode, String fileName, GeneratorOptions options) {
     final dynamic map = jsonDecode(dartCode);
@@ -35,16 +34,6 @@ class SwaggerModelsGeneratorV2 implements SwaggerModelsGenerator {
     }).join('\n');
 
     return '$generatedClasses\n$generatedEnumFromJsonToJson';
-  }
-
-  String getValidatedClassName(String className) {
-    final result = className.pascalCase;
-
-    if (_keyClasses.contains(result)) {
-      return '$result\$';
-    }
-
-    return result;
   }
 
   String genetateEnumFromJsonToJsonMethods(List<String> enumNames) {
