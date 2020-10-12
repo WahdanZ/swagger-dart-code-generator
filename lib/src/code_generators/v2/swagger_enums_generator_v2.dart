@@ -56,7 +56,7 @@ $enumsFromClasses\n$enumsFromRequests''';
         for (var p = 0; p < swaggerRequest.parameters.length; p++) {
           final swaggerRequestParameter = swaggerRequest.parameters[p];
 
-          var name = SwaggerModelsGeneratorV2.generateRequestEnumName(
+          var name = SwaggerModelsGeneratorV2().generateRequestEnumName(
               swaggerPath.path,
               swaggerRequest.type,
               swaggerRequestParameter.name);
@@ -99,7 +99,7 @@ $enumsFromClasses\n$enumsFromRequests''';
         for (var p = 0; p < swaggerRequest.parameters.length; p++) {
           final swaggerRequestParameter = swaggerRequest.parameters[p];
 
-          var name = SwaggerModelsGeneratorV2.generateRequestEnumName(
+          var name = SwaggerModelsGeneratorV2().generateRequestEnumName(
               swaggerPath.path,
               swaggerRequest.type,
               swaggerRequestParameter.name);

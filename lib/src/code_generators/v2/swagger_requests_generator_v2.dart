@@ -355,10 +355,10 @@ abstract class $className extends ChopperService''';
     String parameterType;
     if (parameter.schema?.enumValues != null) {
       parameterType =
-          'enums.${SwaggerModelsGeneratorV2.generateRequestEnumName(path, requestType, parameter.name)}';
+          'enums.${SwaggerModelsGeneratorV2().generateRequestEnumName(path, requestType, parameter.name)}';
     } else if (parameter.items?.enumValues != null) {
       final typeName =
-          'enums.${SwaggerModelsGeneratorV2.generateRequestEnumName(path, requestType, parameter.name)}';
+          'enums.${SwaggerModelsGeneratorV2().generateRequestEnumName(path, requestType, parameter.name)}';
       parameterType = 'List<$typeName>';
     } else {
       parameterType = getParameterTypeName(
@@ -377,7 +377,7 @@ abstract class $className extends ChopperService''';
     String parameterType;
     if (parameter.schema?.enumValues != null) {
       parameterType =
-          'enums.${SwaggerModelsGeneratorV2.generateRequestEnumName(path, requestType, parameter.name)}';
+          'enums.${SwaggerModelsGeneratorV2().generateRequestEnumName(path, requestType, parameter.name)}';
     } else if (parameter.schema?.originalRef != null) {
       parameterType = parameter.schema.originalRef;
     } else if (parameter.schema?.ref != null) {
@@ -455,8 +455,8 @@ abstract class $className extends ChopperService''';
               parameter.items?.enumValues != null ||
               parameter.item?.enumValues != null ||
               parameter.schema?.enumValues != null)
-          .map((e) => SwaggerModelsGeneratorV2.generateRequestEnumName(
-              requestPath, typeRequest, e.name))
+          .map((e) => SwaggerModelsGeneratorV2()
+              .generateRequestEnumName(requestPath, typeRequest, e.name))
           .toList();
 
       publicMethod = generatePublicMethod(
@@ -548,8 +548,8 @@ abstract class $className extends ChopperService''';
   }
 
   String getMapName(String path, String requestType, String parameterName) {
-    final enumName = SwaggerModelsGeneratorV2.generateRequestEnumName(
-        path, requestType, parameterName);
+    final enumName = SwaggerModelsGeneratorV2()
+        .generateRequestEnumName(path, requestType, parameterName);
 
     return 'enums.\$${enumName}Map';
   }
